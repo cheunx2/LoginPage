@@ -9,11 +9,6 @@ public class User {
 	String address;
 	String uTel;
 	public User() {
-<<<<<<< HEAD
-		System.out.println("»ý¼ºÀÚÈ®ÀÎ");
-=======
-		System.out.println("ìƒì„±ìží™•ì¸");
->>>>>>> 29f1015401c892f5329e0f2189423a4b1daaaf2c
 	};
 	public String getuName() { return uName; }
 	public void setuName(String uName) { this.uName = uName; }
@@ -27,8 +22,4 @@ public class User {
 	public void setAddress(String address) { this.address = address; }
 	public String getuTel() { return uTel; }
 	public void setuTel(String uTel) { this.uTel = uTel; }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 29f1015401c892f5329e0f2189423a4b1daaaf2c
