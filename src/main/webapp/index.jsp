@@ -1,68 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%@ page import="java.sql.*"%>
+	pageEncoding="EUC-KR"%>
+<%@ page import="Pack.User" %>
+	
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>로그인 페이지</title>
 </head>
 <body>
-<h1>회원 목록 페이지</h1>
-	<table border="1">
-		<tr>
-			<td>아이디</td>
-			<td>비밀번호</td>
-			<td>삭제</td>
-			<td>수정</td>
-		</tr>
-		<%
-			Connection conn = null; 
-			PreparedStatement pstmt = null; 
-			ResultSet rs = null;
-			
-			try { 
-            Class.forName("com.mysql.jdbc.Driver");
-            String url = "jdbc:mysql://localhost/db01";
-            conn = DriverManager.getConnection(url, "root", "dyddus29!");
-			// 연결 끝
-			
-			String sql = "select * from users"; 
-			pstmt= conn.prepareStatement(sql);
-			
-			System.out.println("연결 완료");
-
-			rs = pstmt.executeQuery(sql); 
-				while (rs.next()) { 
-				/* 	String uid = rs.getString("dddd");  */
-				/* 	String pass = rs.getString("pass"); */
-		%>		<%-- <tr>
-					<td><%=uid%></td>
-					<td><%=pass%></td>
-					<td><a href="delete.jsp?uid=<%=uid %>&pass=<%= pass %>">삭제</a></td>
-					<td><a href="update.jsp?uid=<%=uid %>&pass=<%= pass %>">수정</a></td>
-				</tr> --%>
-		<%			
-				}
-			}catch(SQLException e){
-				e.printStackTrace();
-			}finally{
-				try{
-	                if( conn != null && !conn.isClosed()){
-	                    conn.close();
-	                }
-	                if( pstmt != null && !pstmt.isClosed()){
-	                    pstmt.close();
-	                }
-	                if( rs != null && !rs.isClosed()){
-	                    rs.close();
-	                }
-	            }
-	            catch( SQLException e){
-	                e.printStackTrace();
-	            }
-			}
-		%>
-	</table>
+	<jsp:useBean id="recv" class="Pack.User" scope="page"/>
+	<jsp:setProperty name="recv" property="uId" />
+	
+	<form method=POST action="loginSQL.jsp">
+		<table width="270" border="1" cellpadding="5">
+			<tr>
+				<td colspan="2" align="center">로그인</td>
+			</tr>
+			<tr>
+				<td>아이디</td>
+				<td>
+				<input type="text" name="uId" placeholder="아이디" value="aaaa" required>
+				</td>
+			</tr>
+			<tr>
+				<td>비밀번호</td>
+				<td>
+				<input type="text" name="pass" placeholder="비밀번호" value="bbbb" required>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<%
+						String uId = recv.getuId();
+						if(uId != null){
+							out.print("아이디 또는 비밀번호가 틀렸습니다.");
+						}
+					%>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" value="로그인"></td>
+			</tr>
+		</table>
+	</form>
+	<button onclick="location.href='test.jsp'">아이디 찾기</button>
+	<button onclick="location.href='test.jsp'">비밀번호 찾기</button>
+	<button onclick="location.href='test.jsp'">회원가입</button>
 </body>
 </html>
