@@ -20,17 +20,17 @@
 			<tr>
 				<td>아이디</td>
 				<td>
-				<input type="text" name="uId" placeholder="아이디" value="aaaa" required>
+				<input type="text" name="uId" placeholder="아이디" required>
 				</td>
 			</tr>
 			<tr>
 				<td>비밀번호</td>
 				<td>
-				<input type="text" name="pass" placeholder="비밀번호" value="bbbb" required>
+				<input type="text" name="pass" placeholder="비밀번호" required>
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2">
+				<td colspan="2" style ="color:red">
 					<%
 						String uId = recv.getuId();
 						if(uId != null){
@@ -44,8 +44,8 @@
 			</tr>
 		</table>
 	</form>
-	<button onclick="location.href='test.jsp'">아이디 찾기</button>
-	<button onclick="location.href='test.jsp'">비밀번호 찾기</button>
-	<button onclick="location.href='test.jsp'">회원가입</button>
+	<button onclick="location.href='findid.jsp'">아이디 찾기</button>
+	<button onclick="location.href='findpass.jsp'">비밀번호 찾기</button>
+	<button onclick="location.href='Join.jsp'">회원가입</button>
 </body>
 </html>
