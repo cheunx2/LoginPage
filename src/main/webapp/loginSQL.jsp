@@ -33,7 +33,7 @@
 				
 				result = pstmt.executeQuery(); 
 				
-				while (result.next()) {
+				if (result.next()) {
 					String match = result.getString("CNT");
 					if (match.equals("1")) {
 						response.sendRedirect("success.jsp?uId=" + request.getParameter("uId"));
