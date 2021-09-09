@@ -8,7 +8,7 @@ public class User {
 	String address;
 	String uTel;
 	public User() {
-		System.out.println("»ı¼ºÀÚ Äİ");
+		System.out.println("ìƒì„±ìí™•ì¸");
 	};
 	public String getuName() { return uName; }
 	public void setuName(String uName) { this.uName = uName; }
